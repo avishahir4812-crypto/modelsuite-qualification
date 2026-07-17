@@ -69,6 +69,11 @@ const createTask = async (req, res) => {
       dueDate,
       createdBy: req.user._id,
     });
+    if (assignedTo) {
+  console.log(
+    `Notification: Task "${task.title}" has been assigned to ${user.name} (${user.email})`
+  );
+}
 
     res.status(201).json(task);
   } catch (error) {
@@ -111,7 +116,11 @@ const updateTask = async (req, res) => {
       { ...req.body },
       { new: true }
     ).populate('assignedTo', 'name email');
-
+if (req.body.assignedTo && updated.assignedTo) {
+  console.log(
+    `Notification: Task "${updated.title}" has been assigned to ${updated.assignedTo.name} (${updated.assignedTo.email})`
+  );
+}
     res.json(updated);
   } catch (error) {
     res.status(500).json({ message: error.message });
