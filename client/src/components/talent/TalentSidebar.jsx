@@ -19,7 +19,7 @@ const IconTasks = () => (
 );
 
 const IconLogout = () => (
-  <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
     <path d="M13 10H3M13 10l-3-3M13 10l-3 3"/>
     <path d="M7 4H4a1 1 0 00-1 1v10a1 1 0 001 1h3"/>
   </svg>
@@ -69,27 +69,27 @@ const TalentSidebar = () => {
       {/* Footer */}
       <div className="px-3 pb-5">
         <div className="sidebar-divider mb-4" />
-        <div className="flex items-center justify-between gap-2 px-1">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className="w-8 h-8 rounded-full avatar-talent flex items-center justify-center text-[12px] font-bold text-white shrink-0">
-              {user?.name?.[0]?.toUpperCase() ?? 'T'}
-            </div>
-            <div className="min-w-0">
-              <p className="text-[13px] font-semibold truncate max-w-[100px]"
-                style={{ color: '#E5E2E1', fontFamily: 'Inter, sans-serif' }}>
-                {user?.name}
-              </p>
-              <p className="text-[11px]" style={{ color: '#4B5563' }}>Talent</p>
-            </div>
-          </div>
 
-          <button
-            onClick={() => { logout(); navigate('/login'); }}
-            title="Sign out"
-            className="logout-btn">
-            <IconLogout />
-          </button>
+        <div className="flex items-center gap-2.5 px-1 mb-3">
+          <div className="w-8 h-8 rounded-full avatar-talent flex items-center justify-center text-[12px] font-bold text-white shrink-0">
+            {user?.name?.[0]?.toUpperCase() ?? 'T'}
+          </div>
+          <div className="min-w-0">
+            <p className="text-[13px] font-semibold truncate max-w-[130px]"
+              style={{ color: '#E5E2E1', fontFamily: 'Inter, sans-serif' }}>
+              {user?.name}
+            </p>
+            <p className="text-[11px]" style={{ color: '#4B5563' }}>Talent</p>
+          </div>
         </div>
+
+        <button
+          onClick={() => { logout(); navigate('/login'); }}
+          aria-label="Log out of your account"
+          className="logout-btn w-full flex items-center justify-center gap-2 py-2 rounded-lg text-[12.5px] font-semibold cursor-pointer">
+          <IconLogout />
+          <span>Logout</span>
+        </button>
       </div>
     </aside>
   );
